@@ -4,6 +4,7 @@ COPY --from=ghcr.io/astral-sh/uv:0.10.2 /uv /uvx /bin/
 ARG AIRFLOW_VERSION=3.1.7
 ARG PYTHON_CONSTRAINTS=3.12
 ARG AIRFLOW_PROVIDER_KEYCLOAK_VERSION=0.5.1
+ARG AIRFLOW_PROVIDER_DOCKER_VERSION=4.5.2
 
 ENV AIRFLOW_HOME=/opt/airflow
 
@@ -14,6 +15,7 @@ RUN uv venv .venv
 RUN uv pip install \
     "apache-airflow[postgres]==${AIRFLOW_VERSION}" \
     "apache-airflow-providers-keycloak[common.compat]==${AIRFLOW_PROVIDER_KEYCLOAK_VERSION}" \
+    "apache-airflow-providers-docker[common.compat]==${AIRFLOW_PROVIDER_DOCKER_VERSION}" \
     --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-${AIRFLOW_VERSION}/constraints-${PYTHON_CONSTRAINTS}.txt"
 
 EXPOSE 8080

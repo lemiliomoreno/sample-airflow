@@ -2,3 +2,5 @@
 Dockerfile
 docker-compose.yml
 *.pyc
+README.md
+.env.example

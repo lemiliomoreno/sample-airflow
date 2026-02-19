@@ -16,5 +16,6 @@ services:
       - .env
     volumes:
       - ./dags:/opt/airflow/dags
+      - /var/run/docker.sock:/var/run/docker.sock
     depends_on:
       - db
